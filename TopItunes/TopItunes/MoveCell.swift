@@ -10,4 +10,8 @@ import UIKit
 
 class MoveCell: UICollectionViewCell {
     
+    @IBOutlet weak var moveImage: UIImageView!
+    
+    @IBOutlet weak var moveName: UILabel!
+    
 }
