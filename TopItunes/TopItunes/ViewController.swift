@@ -45,9 +45,6 @@ class ViewController: UIViewController {
             
         }
        
-        
-        
-       
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,14 +61,25 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoveCell", for: indexPath) as! MoveCell
-       cell.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+       //cell.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
         //cell.moveName.text = "New Move"
          let textData = listOfMove[indexPath.row]
         cell.moveName.text = textData.name
+        cell.moveImage.setImageFromURl(stringImageUrl: textData.linkImage)
         return cell
     }
     
+}
+
+extension UIImageView{
     
-   
+    func setImageFromURl(stringImageUrl url: String){
+        
+        if let url = NSURL(string: url) {
+            if let data = NSData(contentsOf: url as URL) {
+                self.image = UIImage(data: data as Data)
+            }
+        }
+    }
 }
 
