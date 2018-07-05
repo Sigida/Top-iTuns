@@ -14,6 +14,7 @@
 		847AD5F620EE96CE00B93FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847AD5F520EE96CE00B93FBF /* Assets.xcassets */; };
 		847AD5F920EE96CE00B93FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847AD5F720EE96CE00B93FBF /* LaunchScreen.storyboard */; };
 		847AD60120EE991A00B93FBF /* Moves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD60020EE991A00B93FBF /* Moves.swift */; };
+		847AD60320EEA15200B93FBF /* MoveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD60220EEA15200B93FBF /* MoveCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		847AD5F820EE96CE00B93FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		847AD5FA20EE96CE00B93FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847AD60020EE991A00B93FBF /* Moves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moves.swift; sourceTree = "<group>"; };
+		847AD60220EEA15200B93FBF /* MoveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				847AD5EE20EE96CD00B93FBF /* AppDelegate.swift */,
+				847AD60220EEA15200B93FBF /* MoveCell.swift */,
 				847AD5F020EE96CD00B93FBF /* ViewController.swift */,
 				847AD5F220EE96CD00B93FBF /* Main.storyboard */,
 				847AD5F520EE96CE00B93FBF /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847AD60320EEA15200B93FBF /* MoveCell.swift in Sources */,
 				847AD5F120EE96CD00B93FBF /* ViewController.swift in Sources */,
 				847AD5EF20EE96CD00B93FBF /* AppDelegate.swift in Sources */,
 				847AD60120EE991A00B93FBF /* Moves.swift in Sources */,
