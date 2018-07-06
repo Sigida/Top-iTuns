@@ -78,6 +78,7 @@
                                         <connections>
                                             <outlet property="moveImage" destination="Nqk-Bs-fRb" id="gmt-FB-3aj"/>
                                             <outlet property="moveName" destination="MxV-mV-Shw" id="NfI-Dp-oLB"/>
+                                            <segue destination="BtM-BZ-Ckh" kind="presentation" identifier="Description" id="Q1i-TQ-DA9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -107,6 +108,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-92" y="111.99400299850076"/>
+        </scene>
+        <!--Description Controller-->
+        <scene sceneID="L5o-XQ-jbS">
+            <objects>
+                <viewController id="BtM-BZ-Ckh" customClass="DescriptionController" customModule="TopItunes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iOq-GR-g2v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hav-qM-446">
+                                <rect key="frame" x="94" y="575" width="187" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.85327852625600054" green="0.64121625093429135" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.99992352724075317" green="1" blue="0.99988299608230591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeWindow:" destination="BtM-BZ-Ckh" eventType="touchUpInside" id="WMO-2s-T4o"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VsL-4p-IvE">
+                                <rect key="frame" x="96" y="50" width="183" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rj-4M-cio">
+                                <rect key="frame" x="108" y="367" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="scB-bR-9TS"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="hav-qM-446" id="noS-1v-fVu"/>
+                        <outlet property="filmImage" destination="VsL-4p-IvE" id="3ha-eh-whV"/>
+                        <outlet property="filmName" destination="0rj-4M-cio" id="Aky-Ge-udJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RyL-I3-jGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="637.60000000000002" y="111.99400299850076"/>
         </scene>
     </scenes>
     <resources>

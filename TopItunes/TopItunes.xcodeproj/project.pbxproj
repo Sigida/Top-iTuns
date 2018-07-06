@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		20B6E29E7D54011BA3E6F1BC /* Pods_TopItunes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A44757B8ABA677DDC42D28 /* Pods_TopItunes.framework */; };
 		84122EFD20EF878A008E8612 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84122EFC20EF878A008E8612 /* ServerManager.swift */; };
+		8414255620EFF3080082DC5B /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414255520EFF3070082DC5B /* DescriptionController.swift */; };
 		847AD5EF20EE96CD00B93FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD5EE20EE96CD00B93FBF /* AppDelegate.swift */; };
 		847AD5F120EE96CD00B93FBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AD5F020EE96CD00B93FBF /* ViewController.swift */; };
 		847AD5F420EE96CD00B93FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847AD5F220EE96CD00B93FBF /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		4D4A8C05DE1D29DE42EA287C /* Pods-TopItunes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TopItunes.release.xcconfig"; path = "Pods/Target Support Files/Pods-TopItunes/Pods-TopItunes.release.xcconfig"; sourceTree = "<group>"; };
 		62A44757B8ABA677DDC42D28 /* Pods_TopItunes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TopItunes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84122EFC20EF878A008E8612 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		8414255520EFF3070082DC5B /* DescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
 		847AD5EB20EE96CD00B93FBF /* TopItunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopItunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847AD5EE20EE96CD00B93FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847AD5F020EE96CD00B93FBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				847AD5F520EE96CE00B93FBF /* Assets.xcassets */,
 				847AD5F720EE96CE00B93FBF /* LaunchScreen.storyboard */,
 				847AD5FA20EE96CE00B93FBF /* Info.plist */,
+				8414255520EFF3070082DC5B /* DescriptionController.swift */,
 			);
 			path = TopItunes;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				84122EFD20EF878A008E8612 /* ServerManager.swift in Sources */,
 				847AD60320EEA15200B93FBF /* MoveCell.swift in Sources */,
+				8414255620EFF3080082DC5B /* DescriptionController.swift in Sources */,
 				847AD5F120EE96CD00B93FBF /* ViewController.swift in Sources */,
 				847AD5EF20EE96CD00B93FBF /* AppDelegate.swift in Sources */,
 				847AD60120EE991A00B93FBF /* Moves.swift in Sources */,

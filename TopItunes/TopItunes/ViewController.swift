@@ -11,10 +11,15 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController {
-     //connect to model
- fileprivate var  listOfMove = [Moves]()
     
-    let apiToContact = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json"
+    
+    
+    //connect to model
+ fileprivate var  listOfMove = [Moves]()
+   var textName = ""
+   var textImageName = ""
+    
+    private let apiToContact = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json"
 
     
     @IBOutlet weak var topMovesCollection: UICollectionView!
@@ -27,32 +32,14 @@ class ViewController: UIViewController {
       
     }
     
-    
     func getMoves(apiToContact:String) {
-        Alamofire.request(apiToContact, method: .get).responseJSON { response in
-            guard response.result.isSuccess else {
-                print("Error request \(String(describing: response.result.error))")
-                
-                return
-            }
-            if  let arrayOfItems = response.result.value {
-                let json = JSON(arrayOfItems)
-                let topMovieDataArray = json["feed"]["results"].arrayValue
-                //print(topMovieDataArray)
-                
-                for item in topMovieDataArray {
-                    let move = Moves(json: item )
-                    self.listOfMove.append(move)
-                    
-                }
-            }
+        ServerManager.sharedInstance.getRequest(apiToContact: apiToContact) {
             DispatchQueue.main.async {
+                self.listOfMove = ServerManager.sharedInstance.arrayMoves
                 self.topMovesCollection.reloadData()
             }
-            
         }
-        
-    }
+}
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -62,13 +49,37 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoveCell", for: indexPath) as! MoveCell
-       //cell.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-        //cell.moveName.text = "New Move"
+       
+        
          let textData = listOfMove[indexPath.row]
+        
         cell.moveName.text = textData.name
         cell.moveImage.setImageFromURl(stringImageUrl: textData.linkImage)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  
+       //self.performSegue(withIdentifier:"Description", sender: self)
+     
+     //  let textData = listOfMove[indexPath.row]
+    //textImageName = textData.linkImage
+    //textName = textData.name
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+      if let identifire = segue.identifier,
+        identifire == "Description",
+        let descriptionVC = segue.destination as? DescriptionController {
+        
+      //descriptionVC.textName = textName
+      //descriptionVC.textImage = textImageName
+        
+        }
+    }
+    
     
 }
 
