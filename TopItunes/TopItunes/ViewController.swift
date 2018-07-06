@@ -14,6 +14,7 @@ class ViewController: UIViewController {
      //connect to model
  fileprivate var  listOfMove = [Moves]()
     
+    let apiToContact = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json"
 
     
     @IBOutlet weak var topMovesCollection: UICollectionView!
@@ -22,9 +23,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
       //request
-        
-        let apiToContact = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json"
-        
+            getMoves(apiToContact: apiToContact)
+      
+    }
+    
+    
+    func getMoves(apiToContact:String) {
         Alamofire.request(apiToContact, method: .get).responseJSON { response in
             guard response.result.isSuccess else {
                 print("Error request \(String(describing: response.result.error))")
