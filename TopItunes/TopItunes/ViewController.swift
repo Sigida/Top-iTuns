@@ -14,12 +14,15 @@ class ViewController: UIViewController {
      //connect to model
  fileprivate var  listOfMove = [Moves]()
     
+
+    
     @IBOutlet weak var topMovesCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        //request
+      //request
+        
         let apiToContact = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json"
         
         Alamofire.request(apiToContact, method: .get).responseJSON { response in
@@ -31,7 +34,7 @@ class ViewController: UIViewController {
             if  let arrayOfItems = response.result.value {
                 let json = JSON(arrayOfItems)
                 let topMovieDataArray = json["feed"]["results"].arrayValue
-               //print(topMovieDataArray)
+                //print(topMovieDataArray)
                 
                 for item in topMovieDataArray {
                     let move = Moves(json: item )
@@ -44,16 +47,10 @@ class ViewController: UIViewController {
             }
             
         }
-       
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
+
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listOfMove.count
