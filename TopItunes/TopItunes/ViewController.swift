@@ -33,13 +33,19 @@ class ViewController: UIViewController {
     }
     
     func getMoves(apiToContact:String) {
-        ServerManager.sharedInstance.getRequest(apiToContact: apiToContact) {
-            DispatchQueue.main.async {
-                self.listOfMove = ServerManager.sharedInstance.arrayMoves
+        ServerManager.sharedInstance.getRequest(apiToContact: apiToContact) { (result) in
+            
+            switch result {
+                
+            case.Success(let data):
+                self.listOfMove = data
                 self.topMovesCollection.reloadData()
-            }
-        }
-}
+            case.Error(let massage):
+                print (massage)
+    }
+    }
+    }
+   
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {

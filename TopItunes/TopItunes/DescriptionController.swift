@@ -31,8 +31,8 @@ class DescriptionController: UIViewController {
     }
     
     func setupView() {
-        filmImage.setImageFromURl(stringImageUrl: textImage)
-        filmName.text = textName
+        //filmImage.setImageFromURl(stringImageUrl: textImage)
+        //filmName.text = textName
         
     }
     

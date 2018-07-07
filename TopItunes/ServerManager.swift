@@ -13,32 +13,52 @@ import Alamofire
 class ServerManager {
     
 static let sharedInstance = ServerManager()
- 
-   var arrayMoves = [Moves]()
     
-    func getRequest(apiToContact: String, complition:@escaping ()->Void) {
+    enum Result <T> {
+        
+        case Success(T)
+        case Error(String)
+        
+    }
+    
+    
+    func getRequest(apiToContact: String,
+                    complition:@escaping (Result<[Moves]>)->Void) {
         
     Alamofire.request(apiToContact, method: .get).responseJSON { response in
+        
     guard response.result.isSuccess else {
-    print("Error request \(String(describing: response.result.error))")
-    return
+  
+    return complition(.Error("Error request \(String(describing: response.result.error))"))
     
     }
 
-    if  let arrayOfItems = response.result.value {
+    guard let arrayOfItems = response.result.value else {
+        
+    return complition(.Error("Can't get array of data"))
+       
+    }
+        
     let json = JSON(arrayOfItems)
+            
     let topMovieDataArray = json["feed"]["results"].arrayValue
+    
+    var arrayMoves = [Moves]()
         
     for item in topMovieDataArray {
+        
     let move = Moves(json: item )
-        
-    self.arrayMoves.append(move)
     
-    complition()
+    arrayMoves.append(move)
         
-    }
+        }
+        
+        DispatchQueue.main.async {
+            complition(.Success(arrayMoves))
+        }
+        
         }
         }
     
     }
-    }
+
