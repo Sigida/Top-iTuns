@@ -38,12 +38,29 @@ class ViewController: UIViewController {
             switch result {
                 
             case.Success(let data):
+               
                 self.listOfMove = data
                 self.topMovesCollection.reloadData()
+                
             case.Error(let massage):
-                print (massage)
+                
+                DispatchQueue.main.async {
+                    self.showAlertWith(title: "Error", message: massage)
+                }
     }
     }
+    }
+    
+    func showAlertWith(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: title, style: .default) {
+            [weak self]
+            (action) in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+       present(alert, animated: true, completion: nil)
     }
    
 }
