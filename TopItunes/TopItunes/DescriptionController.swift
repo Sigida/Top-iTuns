@@ -16,14 +16,13 @@ class DescriptionController: UIViewController {
     
     var textName = ""
     var textImage = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    // setupView()
-        
     }
 
-  
     @IBAction func closeWindow(_ sender: UIButton) {
         dismiss(animated: true) {
             
@@ -31,7 +30,8 @@ class DescriptionController: UIViewController {
     }
     
     func setupView() {
-        //filmImage.setImageFromURl(stringImageUrl: textImage)
+      //filmImage.setImageFromURl(stringImageUrl: textImage)
+       // print (textName)
         //filmName.text = textName
         
     }

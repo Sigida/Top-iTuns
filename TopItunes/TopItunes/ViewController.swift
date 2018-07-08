@@ -19,6 +19,7 @@ class ViewController: UIViewController {
    var textName = ""
    var textImageName = ""
     
+    
     private let apiToContact = "https://rss.itunes.apple.com/api/v1/us/movies/top-movies/all/10/explicit.json"
 
     
@@ -38,14 +39,13 @@ class ViewController: UIViewController {
             switch result {
                 
             case.Success(let data):
-               
                 self.listOfMove = data
                 self.topMovesCollection.reloadData()
                 
             case.Error(let massage):
                 
-                DispatchQueue.main.async {
-                    self.showAlertWith(title: "Error", message: massage)
+                DispatchQueue.main.async { [weak self] in
+                    self?.showAlertWith(title: "Error", message: massage)
                 }
     }
     }
@@ -78,16 +78,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         
         cell.moveName.text = textData.name
         cell.moveImage.setImageFromURl(stringImageUrl: textData.linkImage)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
   
-       //self.performSegue(withIdentifier:"Description", sender: self)
-     
-     //  let textData = listOfMove[indexPath.row]
-    //textImageName = textData.linkImage
-    //textName = textData.name
+        
+    let textData = listOfMove[indexPath.row]
+    textImageName = textData.linkImage
+    textName = textData.name
+       
+        self.performSegue(withIdentifier:"Description", sender: self)
         
     }
     
@@ -96,9 +98,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
       if let identifire = segue.identifier,
         identifire == "Description",
         let descriptionVC = segue.destination as? DescriptionController {
-        
-      //descriptionVC.textName = textName
-      //descriptionVC.textImage = textImageName
+       
+    // descriptionVC.textName = textName
+     
+    //descriptionVC.textImage = textImageName
         
         }
     }
@@ -108,12 +111,19 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
 extension UIImageView{
     
-    func setImageFromURl(stringImageUrl url: String){
+    func setImageFromURl(stringImageUrl urlSt: String){
         
-        if let url = NSURL(string: url) {
-            if let data = NSData(contentsOf: url as URL) {
-                self.image = UIImage(data: data as Data)
-            }
+        if let url = URL(string: urlSt) {
+            
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+             let urlContents =  try? Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    if let imageData = urlContents {
+                        self?.image = UIImage(data: imageData)
+                    }
+                }
+               
+        }
         }
     }
 }
