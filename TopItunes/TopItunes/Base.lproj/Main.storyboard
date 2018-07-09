@@ -55,7 +55,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="242"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nqk-Bs-fRb">
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Plq-mj-iYz">
+                                                    <rect key="frame" x="76" y="111" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nqk-Bs-fRb">
                                                     <rect key="frame" x="10" y="8" width="162" height="242"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxV-mV-Shw">
@@ -68,17 +72,17 @@
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottomMargin" secondItem="MxV-mV-Shw" secondAttribute="bottom" constant="5" id="C6Y-Zn-zjY"/>
-                                            <constraint firstAttribute="trailing" secondItem="Nqk-Bs-fRb" secondAttribute="trailing" constant="5" id="dmB-BM-peQ"/>
-                                            <constraint firstItem="Nqk-Bs-fRb" firstAttribute="top" secondItem="Gz8-u1-Rd2" secondAttribute="top" id="glD-Lw-RNb"/>
-                                            <constraint firstAttribute="bottom" secondItem="Nqk-Bs-fRb" secondAttribute="bottom" id="jGb-aJ-z10"/>
+                                            <constraint firstAttribute="trailing" secondItem="Nqk-Bs-fRb" secondAttribute="trailing" id="dmB-BM-peQ"/>
+                                            <constraint firstItem="Nqk-Bs-fRb" firstAttribute="top" secondItem="Gz8-u1-Rd2" secondAttribute="top" constant="8" id="glD-Lw-RNb"/>
+                                            <constraint firstAttribute="bottom" secondItem="Nqk-Bs-fRb" secondAttribute="bottom" constant="-8" id="jGb-aJ-z10"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="MxV-mV-Shw" secondAttribute="trailing" constant="5" id="odu-J5-SSj"/>
-                                            <constraint firstItem="Nqk-Bs-fRb" firstAttribute="leading" secondItem="Gz8-u1-Rd2" secondAttribute="leading" constant="5" id="p6K-N1-8lQ"/>
+                                            <constraint firstItem="Nqk-Bs-fRb" firstAttribute="leading" secondItem="Gz8-u1-Rd2" secondAttribute="leading" constant="10" id="p6K-N1-8lQ"/>
                                             <constraint firstItem="MxV-mV-Shw" firstAttribute="leading" secondItem="Gz8-u1-Rd2" secondAttribute="leadingMargin" constant="5" id="qDE-An-ad9"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="moveImage" destination="Nqk-Bs-fRb" id="gmt-FB-3aj"/>
                                             <outlet property="moveName" destination="MxV-mV-Shw" id="NfI-Dp-oLB"/>
-                                            <segue destination="BtM-BZ-Ckh" kind="presentation" identifier="Description" id="Q1i-TQ-DA9"/>
+                                            <outlet property="spinner" destination="Plq-mj-iYz" id="c7M-Um-skE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -103,11 +107,12 @@
                     <navigationItem key="navigationItem" title="Top 10 moves" id="CKj-22-yG1"/>
                     <connections>
                         <outlet property="topMovesCollection" destination="HwJ-L3-B6m" id="0cf-Ha-VrY"/>
+                        <segue destination="BtM-BZ-Ckh" kind="show" identifier="Description" id="7bG-O8-jHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-92" y="111.99400299850076"/>
+            <point key="canvasLocation" x="-47.200000000000003" y="111.99400299850076"/>
         </scene>
         <!--Description Controller-->
         <scene sceneID="L5o-XQ-jbS">
@@ -117,12 +122,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JMS-Lx-uLy">
+                                <rect key="frame" x="173" y="248" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hav-qM-446">
                                 <rect key="frame" x="94" y="575" width="187" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.85327852625600054" green="0.64121625093429135" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Close">
+                                <state key="normal" title="Buy">
                                     <color key="titleColor" red="0.99992352724075317" green="1" blue="0.99988299608230591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -131,20 +140,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="closeWindow:" destination="BtM-BZ-Ckh" eventType="touchUpInside" id="WMO-2s-T4o"/>
+                                    <action selector="buyMove:" destination="BtM-BZ-Ckh" eventType="touchUpInside" id="WMO-2s-T4o"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VsL-4p-IvE">
-                                <rect key="frame" x="96" y="50" width="183" height="245"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rj-4M-cio">
-                                <rect key="frame" x="108" y="367" width="162" height="21"/>
+                                <rect key="frame" x="106" y="472" width="162" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VsL-4p-IvE">
+                                <rect key="frame" x="85" y="136" width="196" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="scB-bR-9TS"/>
@@ -153,11 +162,12 @@
                         <outlet property="closeButton" destination="hav-qM-446" id="noS-1v-fVu"/>
                         <outlet property="filmImage" destination="VsL-4p-IvE" id="3ha-eh-whV"/>
                         <outlet property="filmName" destination="0rj-4M-cio" id="Aky-Ge-udJ"/>
+                        <outlet property="spinner" destination="JMS-Lx-uLy" id="syj-8N-dn9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RyL-I3-jGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637.60000000000002" y="111.99400299850076"/>
+            <point key="canvasLocation" x="796" y="112"/>
         </scene>
     </scenes>
     <resources>

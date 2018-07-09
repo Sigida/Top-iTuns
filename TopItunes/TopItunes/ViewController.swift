@@ -11,11 +11,14 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController {
+   
+    var  indexOfMove = 0
     
     
     
     //connect to model
  fileprivate var  listOfMove = [Moves]()
+    
    var textName = ""
    var textImageName = ""
     
@@ -45,23 +48,12 @@ class ViewController: UIViewController {
             case.Error(let massage):
                 
                 DispatchQueue.main.async { [weak self] in
-                    self?.showAlertWith(title: "Error", message: massage)
+                    self?.showAlertWith(title: "Error", message: massage, titleForAction: "Ok")
                 }
     }
     }
     }
-    
-    func showAlertWith(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: title, style: .default) {
-            [weak self]
-            (action) in
-            self?.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(action)
-       present(alert, animated: true, completion: nil)
-    }
+
    
 }
 
@@ -83,29 +75,26 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-  
-        
-    let textData = listOfMove[indexPath.row]
-    textImageName = textData.linkImage
-    textName = textData.name
+   
+        indexOfMove = indexPath.row
        
         self.performSegue(withIdentifier:"Description", sender: self)
-        
-    }
     
+    }
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
       if let identifire = segue.identifier,
         identifire == "Description",
         let descriptionVC = segue.destination as? DescriptionController {
-       
-    // descriptionVC.textName = textName
-     
-    //descriptionVC.textImage = textImageName
+        
+        let textData = listOfMove[indexOfMove]
+        
+       descriptionVC.imageURL = URL(string: textData.linkImage)
+       descriptionVC.textName = textData.name
         
         }
     }
-    
     
 }
 
@@ -114,17 +103,34 @@ extension UIImageView{
     func setImageFromURl(stringImageUrl urlSt: String){
         
         if let url = URL(string: urlSt) {
-            
+         
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
              let urlContents =  try? Data(contentsOf: url)
                 DispatchQueue.main.async {
                     if let imageData = urlContents {
                         self?.image = UIImage(data: imageData)
+                        
                     }
                 }
                
         }
+    }
+}
+ 
+}
+
+extension UIViewController {
+    
+    func showAlertWith(title: String, message: String, titleForAction: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: titleForAction, style: .default) {
+            [weak self]
+            (action) in
+            self?.dismiss(animated: true, completion: nil)
         }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
 

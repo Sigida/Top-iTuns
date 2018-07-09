@@ -14,4 +14,11 @@ class MoveCell: UICollectionViewCell {
     
     @IBOutlet weak var moveName: UILabel!
     
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    
+    
 }
+
+
