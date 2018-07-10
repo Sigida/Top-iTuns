@@ -35,7 +35,7 @@ class DescriptionController: UIViewController {
         }
         set {
             filmImage?.image = newValue
-            spinner?.stopAnimating()
+           spinner?.stopAnimating()
         }
     }
     
@@ -48,9 +48,7 @@ class DescriptionController: UIViewController {
         super.viewDidLoad()
         
         if filmImage.image == nil {
-         
-            setImage()
-            
+        setImage ()
         }
        
     }
@@ -66,15 +64,12 @@ class DescriptionController: UIViewController {
      
     }
     
-   
-    
-    
     
     func setImage () {
         
         if let url = imageURL {
           
-           spinner.startAnimating()
+         spinner.startAnimating()
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 let urlContents = try? Data(contentsOf: url)
                 

@@ -69,7 +69,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
          let textData = listOfMove[indexPath.row]
         
         cell.moveName.text = textData.name
-        cell.moveImage.setImageFromURl(stringImageUrl: textData.linkImage)
+        cell.imageURL = URL(string: textData.linkImage)
+        cell.setImage()
+        //cell.moveImage.setImageFromURl(stringImageUrl: textData.linkImage)
         
         return cell
     }
@@ -98,27 +100,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
 }
 
-extension UIImageView{
-    
-    func setImageFromURl(stringImageUrl urlSt: String){
-        
-        if let url = URL(string: urlSt) {
-         
-            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-             let urlContents =  try? Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    if let imageData = urlContents {
-                        self?.image = UIImage(data: imageData)
-                        
-                    }
-                }
-               
-        }
-    }
-}
- 
-}
-
 extension UIViewController {
     
     func showAlertWith(title: String, message: String, titleForAction: String) {
@@ -132,5 +113,6 @@ extension UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
 }
 
