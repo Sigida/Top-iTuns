@@ -1,6 +1,7 @@
 # Top-iTuns
-Create a simple app with API Client. 
-Use singleton.
-Use Alamofire and SwiftyJSON. 
-Use multithreading for receiving and setting images.
+Creating a simple app with API Client:
+
++ Using singleton.
++ Using Alamofire and SwiftyJSON. 
++ Implementing multithreading for receiving and setting images.
 
